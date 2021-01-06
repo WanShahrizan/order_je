@@ -79,7 +79,7 @@ class _AddManuPageState extends State<AddManuPage> {
               left: 28,
               child: Container(
                 child: Text(
-                  'Add Menu',
+                  'Add Menu 12',
                   style: TextStyle(fontSize: 36, color: Colors.white),
                 ),
               ),
