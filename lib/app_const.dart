@@ -1,0 +1,5 @@
+
+
+
+const String CUSTOMER="CUSTOMER";
+const String STALLOWNER="STALLOWNER";

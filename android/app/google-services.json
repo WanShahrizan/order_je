@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748598775118",
+    "project_id": "order-je-51e23",
+    "storage_bucket": "order-je-51e23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748598775118:android:51e008a036af5e1820e21f",
+        "android_client_info": {
+          "package_name": "com.etechviral.order_je"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748598775118-8npa6bmamgf7jncaunhbachi85p68o61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO7-Hkp2dzoRobiFdDnA5dpijAMzE8aoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748598775118-8npa6bmamgf7jncaunhbachi85p68o61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
