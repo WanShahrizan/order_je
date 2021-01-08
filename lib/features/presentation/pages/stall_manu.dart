@@ -45,12 +45,12 @@ class _StallMenuState extends State<StallMenu> {
               child: Image.asset('assets/custom_header.png'),
             ),
             Positioned(
-              top: 65,
+              top: 50,
               left: 20,
               child: Container(
                 child: Text(
-                  'Stall Manu',
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  'Discovery Menu',
+                  style: TextStyle(fontSize: 36, color: Colors.white),
                 ),
               ),
             ),

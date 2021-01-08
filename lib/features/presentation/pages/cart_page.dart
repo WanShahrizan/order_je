@@ -45,12 +45,12 @@ class _CartPageState extends State<CartPage> {
               child: Image.asset('assets/custom_header.png'),
             ),
             Positioned(
-              top: 60,
+              top: 50,
               left: 20,
               child: Container(
                 child: Text(
                   'Cart',
-                  style: TextStyle(fontSize: 30, color: Colors.white),
+                  style: TextStyle(fontSize: 36, color: Colors.white),
                 ),
               ),
             ),
@@ -236,7 +236,7 @@ class _CartPageState extends State<CartPage> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
-                                                              fontSize: 18),
+                                                              fontSize: 15),
                                                         ),
                                                       ),
                                                       Container(
@@ -339,75 +339,75 @@ class _CartPageState extends State<CartPage> {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(color: Colors.white),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Payment',
-                          style: TextStyle(fontSize: 20, color: Colors.black),
-                        ),
-                        SizedBox(
-                          width: 18,
-                        ),
-                        Container(
-                            padding: EdgeInsets.all(5),
-                            height: 27,
-                            width: 63,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: colorFEB727,
-                            ),
-                            child: Text(
-                              'Cash',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                              textAlign: TextAlign.center,
-                            )),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        Container(
-                            padding: EdgeInsets.all(5),
-                            height: 27,
-                            width: 63,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: colorFEB727,
-                            ),
-                            child: Text(
-                              'Online',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                              textAlign: TextAlign.center,
-                            )),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            padding: EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              'Total',
-                              style:
-                                  TextStyle(fontSize: 12, color: Colors.black),
-                            )),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          'RM 19.00',
-                          style: TextStyle(fontSize: 16, color: colorFEB727),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                // child: Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Row(
+                //       children: [
+                //         Text(
+                //           'Payment',
+                //           style: TextStyle(fontSize: 20, color: Colors.black),
+                //         ),
+                //         SizedBox(
+                //           width: 18,
+                //         ),
+                //         Container(
+                //             padding: EdgeInsets.all(5),
+                //             height: 27,
+                //             width: 63,
+                //             decoration: BoxDecoration(
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(20)),
+                //               color: colorFEB727,
+                //             ),
+                //             child: Text(
+                //               'Cash',
+                //               style: TextStyle(
+                //                 color: Colors.black,
+                //               ),
+                //               textAlign: TextAlign.center,
+                //             )),
+                //         SizedBox(
+                //           width: 6,
+                //         ),
+                //         Container(
+                //             padding: EdgeInsets.all(5),
+                //             height: 27,
+                //             width: 63,
+                //             decoration: BoxDecoration(
+                //               borderRadius:
+                //                   BorderRadius.all(Radius.circular(20)),
+                //               color: colorFEB727,
+                //             ),
+                //             child: Text(
+                //               'Online',
+                //               style: TextStyle(
+                //                 color: Colors.black,
+                //               ),
+                //               textAlign: TextAlign.center,
+                //             )),
+                //       ],
+                //     ),
+                //     Row(
+                //       children: [
+                //         Container(
+                //             padding: EdgeInsets.only(bottom: 10),
+                //             child: Text(
+                //               'Total',
+                //               style:
+                //                   TextStyle(fontSize: 12, color: Colors.black),
+                //             )),
+                //         SizedBox(
+                //           width: 2,
+                //         ),
+                //         Text(
+                //           'RM 19.00',
+                //           style: TextStyle(fontSize: 16, color: colorFEB727),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
               ),
             ),
           ],

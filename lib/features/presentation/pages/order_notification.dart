@@ -42,7 +42,7 @@ class _OrderNotificationPageState extends State<OrderNotificationPage> {
               child: Image.asset('assets/custom_header.png'),
             ),
             Positioned(
-              top: 65,
+              top: 50,
               left: 20,
               child: Container(
                 child: Text(
@@ -153,24 +153,24 @@ class _OrderNotificationPageState extends State<OrderNotificationPage> {
                                   ),
                                 ),
                                 SizedBox(height: 10,),
-                                Container(
-                                  child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            child: Text('Status'),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            alignment: Alignment.centerRight,
-                                            child: Text("Underway"),
-                                          ),
-                                        ),
-                                      ]
-                                  ),
-                                ),
-                                SizedBox(height: 10,),
+                                // Container(
+                                //   child: Row(
+                                //       children: [
+                                //         Expanded(
+                                //           child: Container(
+                                //             child: Text('Status'),
+                                //           ),
+                                //         ),
+                                //         Expanded(
+                                //           child: Container(
+                                //             alignment: Alignment.centerRight,
+                                //             child: Text("Underway"),
+                                //           ),
+                                //         ),
+                                //       ]
+                                //   ),
+                                // ),
+                                // SizedBox(height: 10,),
                                 Container(
                                   child: Row(
                                       children: [
