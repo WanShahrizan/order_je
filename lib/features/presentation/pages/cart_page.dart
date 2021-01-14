@@ -102,73 +102,101 @@ class _CartPageState extends State<CartPage> {
                                     actionPane: SlidableDrawerActionPane(),
                                     secondaryActions: [
                                       InkWell(
-                                        onTap: (){
-                                          BlocProvider.of<AddToCartCubit>(context).updateToCart(
+                                        onTap: () {
+                                          BlocProvider.of<AddToCartCubit>(
+                                                  context)
+                                              .updateToCart(
                                             addToCartEntity: AddToCartEntity(
                                               cartId: cartData.cartId,
-                                              customerUid: widget.userEntity.uid,
+                                              customerUid:
+                                                  widget.userEntity.uid,
                                               menuPrice: _totalPrice.toString(),
                                               quantity: _quantityCounter,
-                                              time: cartData.isOrderPlace==true?null:Timestamp.now(),
-                                              isOrderPlace: cartData.isOrderPlace==false?true:false,
+                                              time:
+                                                  cartData.isOrderPlace == true
+                                                      ? null
+                                                      : Timestamp.now(),
+                                              isOrderPlace:
+                                                  cartData.isOrderPlace == false
+                                                      ? true
+                                                      : false,
                                             ),
                                           );
-                                          if (cartData.isOrderPlace==false){
-                                            BlocProvider.of<OrderCubit>(context).addToOrder(
-                                              orderEntity: OrderEntity(
-                                                sellerUid: cartData.sellerUid,
-                                                customerUid: cartData.customerUid,
-                                                customerName: cartData.customerName,
-                                                sellerName: cartData.sellerName,
-                                                imageUrl: cartData.imageUrl,
-                                                stallId: cartData.stallId,
-                                                cartId: cartData.cartId,
-                                                menuDescription: cartData.menuDescription,
-                                                menuName: cartData.menuName,
-                                                menuPrice: cartData.menuPrice,
-                                                isOrderComplete: false,
-                                                quantity: cartData.quantity,
-                                                time: Timestamp.now(),
-                                                orderId: "",
-                                              )
-                                            );
-                                          }else if (cartData.isOrderPlace==true){
-                                            BlocProvider.of<OrderCubit>(context).deleteFromOrder(
-                                              orderEntity: OrderEntity(
-                                                  sellerUid: cartData.sellerUid,
-                                                  customerUid: cartData.customerUid,
-                                                  customerName: cartData.customerName,
-                                                  sellerName: cartData.sellerName,
-                                                  imageUrl: cartData.imageUrl,
-                                                  stallId: cartData.stallId,
-                                                  cartId: cartData.cartId,
-                                                  menuDescription: cartData.menuDescription,
-                                                  menuName: cartData.menuName,
-                                                  menuPrice: cartData.menuPrice,
-                                                  isOrderComplete: false,
-                                                  quantity: cartData.quantity,
-                                                  time: Timestamp.now(),
-                                                  orderId: ""
-                                              )
-                                            );
-                                          }else{
-
-                                          }
+                                          if (cartData.isOrderPlace == false) {
+                                            BlocProvider.of<OrderCubit>(context)
+                                                .addToOrder(
+                                                    orderEntity: OrderEntity(
+                                              sellerUid: cartData.sellerUid,
+                                              customerUid: cartData.customerUid,
+                                              customerName:
+                                                  cartData.customerName,
+                                              sellerName: cartData.sellerName,
+                                              imageUrl: cartData.imageUrl,
+                                              stallId: cartData.stallId,
+                                              cartId: cartData.cartId,
+                                              menuDescription:
+                                                  cartData.menuDescription,
+                                              menuName: cartData.menuName,
+                                              menuPrice: cartData.menuPrice,
+                                              isOrderComplete: false,
+                                              quantity: cartData.quantity,
+                                              time: Timestamp.now(),
+                                              orderId: "",
+                                            ));
+                                          } else if (cartData.isOrderPlace ==
+                                              true) {
+                                            BlocProvider.of<OrderCubit>(context)
+                                                .deleteFromOrder(
+                                                    orderEntity: OrderEntity(
+                                                        sellerUid:
+                                                            cartData.sellerUid,
+                                                        customerUid: cartData
+                                                            .customerUid,
+                                                        customerName: cartData
+                                                            .customerName,
+                                                        sellerName:
+                                                            cartData.sellerName,
+                                                        imageUrl:
+                                                            cartData.imageUrl,
+                                                        stallId:
+                                                            cartData.stallId,
+                                                        cartId: cartData.cartId,
+                                                        menuDescription: cartData
+                                                            .menuDescription,
+                                                        menuName:
+                                                            cartData.menuName,
+                                                        menuPrice:
+                                                            cartData.menuPrice,
+                                                        isOrderComplete: false,
+                                                        quantity:
+                                                            cartData.quantity,
+                                                        time: Timestamp.now(),
+                                                        orderId: ""));
+                                          } else {}
                                         },
                                         child: Container(
                                           alignment: Alignment.center,
-                                          padding: EdgeInsets.symmetric(horizontal: 10),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10),
                                           height: 40,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8)),
                                               gradient: LinearGradient(
                                                   colors: [
-                                                Colors.orange,
-                                                Colors.deepOrange,
-                                              ],
+                                                    Colors.orange,
+                                                    Colors.deepOrange,
+                                                  ],
                                                   begin: Alignment.topRight,
                                                   end: Alignment.bottomLeft)),
-                                          child: Text(cartData.isOrderPlace==false?"Start Order":"Cancel Order",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),),
+                                          child: Text(
+                                            cartData.isOrderPlace == false
+                                                ? "Start Order"
+                                                : "Cancel Order",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -185,7 +213,9 @@ class _CartPageState extends State<CartPage> {
                                         width:
                                             MediaQuery.of(context).size.width,
                                         decoration: BoxDecoration(
-                                          color: cartData.isOrderPlace==false?colorFEB727:color2BC205.withOpacity(.5),
+                                          color: cartData.isOrderPlace == false
+                                              ? colorFEB727
+                                              : color2BC205.withOpacity(.5),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)),
                                         ),
@@ -229,25 +259,31 @@ class _CartPageState extends State<CartPage> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: <Widget>[
-                                                      Container(
-                                                        child: Text(
-                                                          cartData.menuName,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 15),
+                                                      Padding(
+                                                        padding:
+                                                          EdgeInsets.only(
+                                                            top: 29,
+                                                          ),
+                                                        child: Container(
+                                                          child: Text(
+                                                            cartData.menuName,
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 15),
+                                                          ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        child: Text(
-                                                            cartData.quantity ==
-                                                                    1
-                                                                ? "Single"
-                                                                : "Double"),
-                                                      ),
-                                                      SizedBox(height: 10,),
-                                                      cartData.isOrderPlace==false?Text(""):Text("Order In Progress",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),)
+                                                      // Container(
+                                                      //   child: Text(
+                                                      //       cartData.quantity ==
+                                                      //               1
+                                                      //           ? ""
+                                                      //           : ""),
+                                                      // ),
+                                                      // SizedBox(height: 10,),
+                                                      // cartData.isOrderPlace==false?Text(""):Text("",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),)
                                                     ],
                                                   ),
                                                 )
@@ -314,8 +350,7 @@ class _CartPageState extends State<CartPage> {
                                                     ],
                                                   ),
                                                   Container(
-                                                    child: Text(
-                                                        "RM ${cartData.menuPrice}"),
+                                                    child: Text(""),
                                                   )
                                                 ],
                                               ),
@@ -475,8 +510,8 @@ class _CartPageState extends State<CartPage> {
                 time: Timestamp.now(),
               ),
             );
-            _totalPrice=null;
-            _quantityCounter=null;
+            _totalPrice = null;
+            _quantityCounter = null;
             Future.delayed(Duration(microseconds: 400), () {
               Navigator.pop(context);
             });
@@ -499,8 +534,8 @@ class _CartPageState extends State<CartPage> {
         InkWell(
           onTap: () {
             Navigator.pop(context);
-            _totalPrice=0;
-            _quantityCounter=0;
+            _totalPrice = 0;
+            _quantityCounter = 0;
           },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),

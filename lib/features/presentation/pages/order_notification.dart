@@ -136,7 +136,6 @@ class _OrderNotificationPageState extends State<OrderNotificationPage> {
                                 SizedBox(height: 10,),
                                 Container(
                                   child: Row(
-
                                       children: [
                                         Expanded(
                                           child: Container(
@@ -153,24 +152,24 @@ class _OrderNotificationPageState extends State<OrderNotificationPage> {
                                   ),
                                 ),
                                 SizedBox(height: 10,),
-                                // Container(
-                                //   child: Row(
-                                //       children: [
-                                //         Expanded(
-                                //           child: Container(
-                                //             child: Text('Status'),
-                                //           ),
-                                //         ),
-                                //         Expanded(
-                                //           child: Container(
-                                //             alignment: Alignment.centerRight,
-                                //             child: Text("Underway"),
-                                //           ),
-                                //         ),
-                                //       ]
-                                //   ),
-                                // ),
-                                // SizedBox(height: 10,),
+                                Container(
+                                  child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            child: Text("${orderData.menuName}"),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.centerRight,
+                                            child: Text( "Qty: " + '${orderData.quantity}'),
+                                          ),
+                                        ),
+                                      ]
+                                  ),
+                                ),
+                                 SizedBox(height: 10,),
                                 Container(
                                   child: Row(
                                       children: [

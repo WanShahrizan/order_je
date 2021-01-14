@@ -96,7 +96,7 @@ class _AddManuPageState extends State<AddManuPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Manu Name',
+                  'Menu Name',
                   style: TextStyle(fontSize: 23),
                 ),
                 SizedBox(

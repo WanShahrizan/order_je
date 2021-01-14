@@ -31,10 +31,10 @@ class StallMenuEntity extends Equatable {
         menuPrice,
         menuDescription,
         imageUrl,
-    isMenuAvailable,
-    uid,
-    stallId,
-    time,
-    this.sellerName
+        isMenuAvailable,
+        uid,
+        stallId,
+        time,
+        this.sellerName
       ];
 }

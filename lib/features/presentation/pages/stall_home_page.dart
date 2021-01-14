@@ -78,7 +78,11 @@ class _StallHomePageState extends State<StallHomePage> {
                         )),
                         InkWell(
                           onTap: () {
-                            push(context, AddManuPage(user: widget.user,));
+                            push(
+                                context,
+                                AddManuPage(
+                                  user: widget.user,
+                                ));
                           },
                           child: Row(
                             children: [
@@ -208,193 +212,212 @@ class _StallHomePageState extends State<StallHomePage> {
                   )
                 : SingleChildScrollView(
                     child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                  child: ListView.builder(
-                      itemCount: stallMenuItems.length,
-                      physics: ScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.only(bottom: 20),
-                          child: Stack(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  print(stallMenuItems[index].stallId);
-                                  showTerminateAlertDialog(
-                                      context, stallMenuItems, index);
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: 150,
-                                  width: 362,
-                                  decoration: BoxDecoration(
-                                      color: colorFEB727,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20))),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 150,
-                                        width: 150,
-                                        padding: EdgeInsets.all(4),
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20)),
-                                          child: CachedNetworkImage(
-                                            imageUrl:
-                                                stallMenuItems[index].imageUrl,
-                                            fit: BoxFit.fitHeight,
-                                            placeholder: (context, url) =>
-                                                CircularProgressIndicator(),
-                                            errorWidget: (context, url, error) =>
-                                                Icon(Icons.error),
+                    padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                    child: ListView.builder(
+                        itemCount: stallMenuItems.length,
+                        physics: ScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.only(bottom: 20),
+                            child: Stack(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    print(stallMenuItems[index].stallId);
+                                    showTerminateAlertDialog(
+                                        context, stallMenuItems, index);
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 150,
+                                    width: 362,
+                                    decoration: BoxDecoration(
+                                        color: colorFEB727,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          height: 150,
+                                          width: 150,
+                                          padding: EdgeInsets.all(4),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            child: CachedNetworkImage(
+                                              imageUrl: stallMenuItems[index]
+                                                  .imageUrl,
+                                              fit: BoxFit.fitHeight,
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          padding: EdgeInsets.only(top: 20),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                stallMenuItems[index].menuName,
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 4,
-                                              ),
-                                              RichText(
-                                                text: TextSpan(children: [
-                                                  TextSpan(
-                                                      text: "price :",
-                                                      style: TextStyle(
-                                                          color: Colors.black)),
-                                                  TextSpan(
-                                                    text:
-                                                        "${stallMenuItems[index].menuPrice}",
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ]),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(''),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      if (stallMenuItems[index]
-                                                              .isMenuAvailable ==
-                                                          true) {
-                                                        BlocProvider.of<
-                                                                    UserCubit>(
-                                                                context)
-                                                            .getUpdateStallMenu(
-                                                          stallMenuEntity:
-                                                              StallMenuEntity(
-                                                                  time: Timestamp
-                                                                      .now(),
-                                                                  isMenuAvailable:
-                                                                      false,
-                                                                  stallId:
-                                                                      stallMenuItems[
-                                                                              index]
-                                                                          .stallId),
-                                                        );
-                                                        return;
-                                                      }
-                                                      if (stallMenuItems[index]
-                                                              .isMenuAvailable ==
-                                                          false) {
-                                                        BlocProvider.of<
-                                                                    UserCubit>(
-                                                                context)
-                                                            .getUpdateStallMenu(
-                                                          stallMenuEntity:
-                                                              StallMenuEntity(
-                                                                  time: Timestamp
-                                                                      .now(),
-                                                                  isMenuAvailable:
-                                                                      true,
-                                                                  stallId:
-                                                                      stallMenuItems[
-                                                                              index]
-                                                                          .stallId),
-                                                        );
-                                                        return;
-                                                      }
-                                                      print(stallMenuItems[index]
-                                                          .isMenuAvailable);
-                                                    },
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.only(top: 8),
-                                                      margin: EdgeInsets.only(
-                                                          right: 10, top: 14),
-                                                      height: 32,
-                                                      width: 160,
-                                                      decoration: BoxDecoration(
-                                                          color: color2BC205,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(
-                                                                      8))),
-                                                      child: Text(
-                                                        stallMenuItems[index]
-                                                                    .isMenuAvailable ==
-                                                                true
-                                                            ? "Make Menu UnAvailable"
-                                                            : "Make Menu Available",
+                                        Expanded(
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  stallMenuItems[index]
+                                                      .menuName,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 4,
+                                                ),
+                                                RichText(
+                                                  text: TextSpan(children: [
+                                                    TextSpan(
+                                                        text: "price :",
                                                         style: TextStyle(
-                                                            fontSize: 14,
-                                                            fontWeight:
-                                                                FontWeight.bold),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                      ),
+                                                            color:
+                                                                Colors.black)),
+                                                    TextSpan(
+                                                      text:
+                                                          "${stallMenuItems[index].menuPrice}",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
-                                                  )
-                                                ],
-                                              )
-                                            ],
+                                                  ]),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(''),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        if (stallMenuItems[
+                                                                    index]
+                                                                .isMenuAvailable ==
+                                                            true) {
+                                                          BlocProvider.of<
+                                                                      UserCubit>(
+                                                                  context)
+                                                              .getUpdateStallMenu(
+                                                            stallMenuEntity: StallMenuEntity(
+                                                                time: Timestamp
+                                                                    .now(),
+                                                                isMenuAvailable:
+                                                                    false,
+                                                                stallId:
+                                                                    stallMenuItems[
+                                                                            index]
+                                                                        .stallId),
+                                                          );
+                                                          return;
+                                                        }
+                                                        if (stallMenuItems[
+                                                                    index]
+                                                                .isMenuAvailable ==
+                                                            false) {
+                                                          BlocProvider.of<
+                                                                      UserCubit>(
+                                                                  context)
+                                                              .getUpdateStallMenu(
+                                                            stallMenuEntity: StallMenuEntity(
+                                                                time: Timestamp
+                                                                    .now(),
+                                                                isMenuAvailable:
+                                                                    true,
+                                                                stallId:
+                                                                    stallMenuItems[
+                                                                            index]
+                                                                        .stallId),
+                                                          );
+                                                          return;
+                                                        }
+                                                        print(stallMenuItems[
+                                                                index]
+                                                            .isMenuAvailable);
+                                                      },
+                                                      child: Container(
+                                                          // padding:
+                                                          //     EdgeInsets.only(top: 8),
+                                                          // margin: EdgeInsets.only(
+                                                          //     right: 10, top: 14),
+                                                          // height: 32,
+                                                          // width: 160,
+                                                          // decoration: BoxDecoration(
+                                                          //     color: color2BC205,
+                                                          //     borderRadius:
+                                                          //         BorderRadius.all(
+                                                          //             Radius.circular(
+                                                          //                 8))),
+                                                          // child: Text(
+                                                          //   stallMenuItems[index]
+                                                          //               .isMenuAvailable ==
+                                                          //           true
+                                                          //       ? "Make Menu UnAvailable"
+                                                          //       : "Make Menu Available",
+                                                          //   style: TextStyle(
+                                                          //       fontSize: 14,
+                                                          //       fontWeight:
+                                                          //           FontWeight.bold),
+                                                          //   textAlign:
+                                                          //       TextAlign.center,
+                                                          // ),
+                                                          ),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              _isDelete==false?Text(""):Positioned(top: 10,right: 10,child:  InkWell(
-                                onTap: (){
-                                  BlocProvider.of<UserCubit>(context).getDeleteStallMenu(stallMenuId: stallMenuItems[index].stallId);
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.red.withOpacity(.6),
-                                      borderRadius: BorderRadius.all(Radius.circular(8))
-                                  ),
-                                  child: Icon(Icons.close,color: Colors.white,),
-                                ),
-                              ),)
-                            ],
-                          ),
-                        );
-                      }),
-                ));
+                                _isDelete == false
+                                    ? Text("")
+                                    : Positioned(
+                                        top: 10,
+                                        right: 10,
+                                        child: InkWell(
+                                          onTap: () {
+                                            BlocProvider.of<UserCubit>(context)
+                                                .getDeleteStallMenu(
+                                                    stallMenuId:
+                                                        stallMenuItems[index]
+                                                            .stallId);
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color:
+                                                    Colors.red.withOpacity(.6),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8))),
+                                            child: Icon(
+                                              Icons.close,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                              ],
+                            ),
+                          );
+                        }),
+                  ));
           }
           return _loadingWidget();
         },
@@ -461,109 +484,112 @@ class _StallHomePageState extends State<StallHomePage> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        final pickedFile =
-                            await picker.getImage(source: ImageSource.gallery);
-                        if (mounted)
-                          setState(() {
-                            if (pickedFile != null) {
-                              _image = File(pickedFile.path);
-                              _isFileUploading = true;
-                            } else {
-                              print('No image selected.');
-                            }
-                          });
-                        if (pickedFile != null) {
-                          final data = await compressImageSize(file: _image);
-                          _uploadImage(file: _image, bytesData: data);
-                        }
-                      },
-                      child: Container(
-                        height: 150,
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(4),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          child: _image == null
-                              ? CachedNetworkImage(
-                                  imageUrl: stallMenuItems[index].imageUrl,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) =>
-                                      CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                )
-                              : Image.file(
-                                  _image,
-                                  fit: BoxFit.cover,
-                                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          final pickedFile = await picker.getImage(
+                              source: ImageSource.gallery);
+                          if (mounted)
+                            setState(() {
+                              if (pickedFile != null) {
+                                _image = File(pickedFile.path);
+                                _isFileUploading = true;
+                              } else {
+                                print('No image selected.');
+                              }
+                            });
+                          if (pickedFile != null) {
+                            final data = await compressImageSize(file: _image);
+                            _uploadImage(file: _image, bytesData: data);
+                          }
+                        },
+                        child: Container(
+                          height: 150,
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(4),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            child: _image == null
+                                ? CachedNetworkImage(
+                                    imageUrl: stallMenuItems[index].imageUrl,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  )
+                                : Image.file(
+                                    _image,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextField(
-                            controller: TextEditingController(
-                              text: stallMenuItems[index].menuName,
-                            ),
-                            onChanged: (value) {
-                              _nameUpdateText = value;
-                            },
-                            decoration: InputDecoration(
-                              hintText: "Name",
-                            ),
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "price :",
-                                style: TextStyle(color: Colors.black),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextField(
+                              controller: TextEditingController(
+                                text: stallMenuItems[index].menuName,
                               ),
-                              Expanded(
-                                  child: TextField(
-                                controller: TextEditingController(
-                                  text: stallMenuItems[index].menuPrice,
+                              onChanged: (value) {
+                                _nameUpdateText = value;
+                              },
+                              decoration: InputDecoration(
+                                hintText: "Name",
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "price :",
+                                  style: TextStyle(color: Colors.black),
                                 ),
-                                onChanged: (value) {
-                                  _priceUpdateText = value;
-                                },
-                                decoration: InputDecoration(hintText: "price"),
-                              )),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            constraints: BoxConstraints(maxHeight: 80),
-                            child: Scrollbar(
-                              child: TextField(
-                                maxLines: 4,
-                                onChanged: (value) {
-                                  _descriptionUpdateText = value;
-                                },
-                                decoration:
-                                    InputDecoration(hintText: "Description"),
-                                controller: TextEditingController(
-                                    text:
-                                        stallMenuItems[index].menuDescription),
-                              ),
+                                Expanded(
+                                    child: TextField(
+                                  controller: TextEditingController(
+                                    text: stallMenuItems[index].menuPrice,
+                                  ),
+                                  onChanged: (value) {
+                                    _priceUpdateText = value;
+                                  },
+                                  decoration:
+                                      InputDecoration(hintText: "price"),
+                                )),
+                              ],
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              constraints: BoxConstraints(maxHeight: 80),
+                              child: Scrollbar(
+                                child: TextField(
+                                  maxLines: 4,
+                                  onChanged: (value) {
+                                    _descriptionUpdateText = value;
+                                  },
+                                  decoration:
+                                      InputDecoration(hintText: "Description"),
+                                  controller: TextEditingController(
+                                      text: stallMenuItems[index]
+                                          .menuDescription),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

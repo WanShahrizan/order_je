@@ -192,7 +192,7 @@ class _AlertOrderPageState extends State<AlertOrderPage> {
                                           Container(
                                             padding: EdgeInsets.only(bottom: 0),
                                             child: Text(
-                                              "time Order: ${DateFormat('h:m a').format(DateTime.fromMicrosecondsSinceEpoch(orderData.time.microsecondsSinceEpoch))}",
+                                              "Time Order: ${DateFormat('h:m a').format(DateTime.fromMicrosecondsSinceEpoch(orderData.time.microsecondsSinceEpoch))}",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold),
                                             ),

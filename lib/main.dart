@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:order_je/features/presentation/cubit/add_to_cart/add_to_cart_cubit.dart';
 import 'package:order_je/features/presentation/cubit/order/order_cubit.dart';
@@ -20,6 +22,12 @@ void main()async {
   await Firebase.initializeApp();
   await di.init();
   di.sl.call<PushNotificationUseCase>().call();
+  //Error Handling
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (kReleaseMode)
+      exit(1);
+  };
   runApp(MyApp());
 }
 
